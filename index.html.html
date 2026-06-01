@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Muhammed Riswan VP — DevOps & Cloud Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg: #060a14;
+  --bg2: #0c1220;
+  --bg3: #111827;
+  --blue: #3b82f6;
+  --blue-bright: #60a5fa;
+  --blue-dim: #1d4ed8;
+  --cyan: #06b6d4;
+  --text: #e2e8f0;
+  --text-dim: #94a3b8;
+  --text-muted: #475569;
+  --border: #1e293b;
+  --border-bright: #2d3f5e;
+  --glow: rgba(59,130,246,0.15);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── NOISE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 18px 48px;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(6,10,20,0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800; font-size: 18px;
+  color: var(--blue-bright);
+  letter-spacing: -0.5px;
+}
+.nav-logo span { color: var(--text-dim); font-weight: 400; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px; color: var(--text-dim);
+  text-decoration: none; letter-spacing: 0.5px;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--blue-bright); }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 120px 48px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-grid-bg {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.4;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+}
+.hero-glow {
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%);
+  top: -100px; left: -100px;
+  pointer-events: none;
+}
+.hero-glow-2 {
+  position: absolute;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 70%);
+  bottom: 0; right: 10%;
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 1; max-width: 760px; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px; color: var(--cyan);
+  border: 1px solid rgba(6,182,212,0.3);
+  background: rgba(6,182,212,0.06);
+  padding: 6px 14px; border-radius: 100px;
+  margin-bottom: 28px;
+  animation: fadeUp 0.6s ease both;
+}
+.hero-badge::before { content: '▶'; font-size: 8px; }
+h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(42px, 7vw, 76px);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -2px;
+  color: var(--text);
+  animation: fadeUp 0.6s 0.1s ease both;
+}
+h1 .accent { color: var(--blue-bright); }
+.hero-role {
+  font-family: 'DM Mono', monospace;
+  font-size: 15px; color: var(--blue);
+  margin-top: 20px; margin-bottom: 20px;
+  animation: fadeUp 0.6s 0.2s ease both;
+}
+.hero-desc {
+  font-size: 17px; color: var(--text-dim);
+  max-width: 560px; line-height: 1.7;
+  margin-bottom: 36px;
+  animation: fadeUp 0.6s 0.3s ease both;
+}
+.hero-ctas {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  animation: fadeUp 0.6s 0.4s ease both;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--blue);
+  color: #fff; font-weight: 600; font-size: 14px;
+  padding: 13px 26px; border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 0 24px rgba(59,130,246,0.3);
+}
+.btn-primary:hover { background: var(--blue-bright); transform: translateY(-2px); box-shadow: 0 0 32px rgba(59,130,246,0.5); }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent;
+  color: var(--text); font-weight: 500; font-size: 14px;
+  padding: 13px 26px; border-radius: 8px;
+  text-decoration: none; border: 1px solid var(--border-bright);
+  transition: border-color 0.2s, color 0.2s, transform 0.15s;
+}
+.btn-secondary:hover { border-color: var(--blue); color: var(--blue-bright); transform: translateY(-2px); }
+
+/* ── SECTIONS ── */
+section { padding: 100px 48px; position: relative; z-index: 1; }
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; color: var(--cyan);
+  letter-spacing: 3px; text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700; letter-spacing: -1px;
+  color: var(--text);
+  margin-bottom: 52px;
+}
+.section-title span { color: var(--blue-bright); }
+
+/* ── SKILLS ── */
+#skills { background: var(--bg2); }
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+.skill-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px 24px;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.skill-card:hover {
+  border-color: var(--blue-dim);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(59,130,246,0.1);
+}
+.skill-card-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; letter-spacing: 2px;
+  color: var(--blue); text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag {
+  font-size: 12px; font-weight: 500;
+  padding: 4px 10px; border-radius: 6px;
+  background: rgba(59,130,246,0.08);
+  color: var(--text-dim);
+  border: 1px solid rgba(59,130,246,0.15);
+}
+
+/* ── PROJECTS ── */
+#projects { background: var(--bg); }
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
+.project-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.project-card:hover {
+  border-color: var(--blue);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(59,130,246,0.12);
+}
+.project-number {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; color: var(--text-muted);
+}
+.project-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 19px; font-weight: 700;
+  color: var(--text); line-height: 1.3;
+}
+.project-desc { font-size: 14px; color: var(--text-dim); line-height: 1.65; }
+.project-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.stack-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; padding: 3px 9px;
+  border-radius: 5px;
+  background: rgba(6,182,212,0.07);
+  color: var(--cyan);
+  border: 1px solid rgba(6,182,212,0.2);
+}
+.project-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.proj-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px; color: var(--blue-bright);
+  text-decoration: none;
+  padding: 5px 12px; border-radius: 6px;
+  border: 1px solid rgba(59,130,246,0.3);
+  background: rgba(59,130,246,0.07);
+  transition: background 0.2s, border-color 0.2s;
+}
+.proj-link:hover { background: rgba(59,130,246,0.15); border-color: var(--blue); }
+  font-family: 'DM Mono', monospace;
+  font-size: 12px; color: var(--blue-bright);
+  margin-top: auto;
+}
+
+/* ── CERTIFICATIONS ── */
+#certifications { background: var(--bg2); }
+.cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.cert-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex; align-items: flex-start; gap: 16px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.cert-card:hover { border-color: var(--blue-dim); transform: translateY(-2px); }
+.cert-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--blue-dim), var(--cyan));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+}
+.cert-name { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 15px; color: var(--text); margin-bottom: 4px; }
+.cert-issuer { font-size: 13px; color: var(--text-dim); }
+.cert-year { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--blue); margin-top: 6px; }
+
+/* ── CONTACT ── */
+#contact { background: var(--bg); }
+.contact-wrapper {
+  max-width: 640px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 40px;
+}
+.contact-form { display: flex; flex-direction: column; gap: 16px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group label { font-size: 12px; font-family: 'DM Mono', monospace; color: var(--text-dim); letter-spacing: 1px; }
+.form-group input,
+.form-group textarea {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+}
+.form-group textarea { resize: vertical; min-height: 120px; }
+.form-submit {
+  background: var(--blue);
+  color: #fff; font-weight: 600; font-size: 14px;
+  padding: 14px; border-radius: 8px;
+  border: none; cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.2s, transform 0.15s;
+  box-shadow: 0 0 20px rgba(59,130,246,0.25);
+}
+.form-submit:hover { background: var(--blue-bright); transform: translateY(-1px); }
+.contact-links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+.contact-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px; color: var(--text-dim);
+  padding: 10px 16px; border-radius: 8px;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+.contact-link:hover { border-color: var(--blue); color: var(--blue-bright); }
+
+/* ── FOOTER ── */
+footer {
+  padding: 28px 48px;
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px; color: var(--text-muted);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 3px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: 16px 20px; }
+  .nav-links { display: none; }
+  #hero, section { padding: 100px 20px 60px; }
+  .form-row { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 8px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">riswan<span>.dev</span></div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Available for Junior DevOps & Cloud roles</div>
+    <h1>Muhammed<br/><span class="accent">Riswan VP</span></h1>
+    <p class="hero-role">// DevOps Engineer · Cloud Infrastructure · Backend Developer</p>
+    <p class="hero-desc">CS graduate with hands-on experience in Linux, Docker, cloud deployments, and CI/CD pipelines. AWS Cloud Foundations certified. Built and shipped production-grade infrastructure from scratch.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary">↗ Get In Touch</a>
+      <a href="Riswan_DevOps_Resume.docx" download class="btn-secondary">⬇ Download Resume</a>
+      <a href="https://www.linkedin.com/in/riswan-dev/" target="_blank" class="btn-secondary">LinkedIn ↗</a>
+      <a href="https://github.com/riswan-coder" target="_blank" class="btn-secondary">GitHub ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label reveal">What I work with</p>
+  <h2 class="section-title reveal">Technical <span>Skills</span></h2>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-card-label">Linux & OS</div>
+      <div class="skill-tags">
+        <span class="tag">Ubuntu Server</span><span class="tag">Bash Scripting</span>
+        <span class="tag">Shell Commands</span><span class="tag">Process Management</span><span class="tag">Cron Jobs</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-label">Containers & Cloud</div>
+      <div class="skill-tags">
+        <span class="tag">Docker</span><span class="tag">Docker Compose</span>
+        <span class="tag">AWS (EC2, S3, IAM)</span><span class="tag">Railway</span><span class="tag">Vercel</span><span class="tag">Azure</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-label">CI/CD & DevOps</div>
+      <div class="skill-tags">
+        <span class="tag">GitHub Actions</span><span class="tag">Git/GitHub</span>
+        <span class="tag">GitLab</span><span class="tag">CI/CD Pipelines</span><span class="tag">Gunicorn</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-label">Backend & APIs</div>
+      <div class="skill-tags">
+        <span class="tag">Python</span><span class="tag">Django</span>
+        <span class="tag">Django REST Framework</span><span class="tag">JWT</span><span class="tag">REST API</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-label">Networking & Security</div>
+      <div class="skill-tags">
+        <span class="tag">DNS</span><span class="tag">SSL/TLS</span>
+        <span class="tag">Firewalls</span><span class="tag">HTTP/HTTPS</span><span class="tag">Nginx basics</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-label">Databases & Tools</div>
+      <div class="skill-tags">
+        <span class="tag">PostgreSQL</span><span class="tag">MySQL</span>
+        <span class="tag">Postman</span><span class="tag">VS Code</span><span class="tag">Selenium</span><span class="tag">Pytest</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-label">Frontend</div>
+      <div class="skill-tags">
+        <span class="tag">React.js</span><span class="tag">React Native</span>
+        <span class="tag">Tailwind CSS</span><span class="tag">JavaScript</span><span class="tag">HTML/CSS</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-label">AI & Machine Learning</div>
+      <div class="skill-tags">
+        <span class="tag">YOLOv8</span><span class="tag">OpenCV</span>
+        <span class="tag">TensorFlow</span><span class="tag">PyTorch</span><span class="tag">Scikit-learn</span><span class="tag">NumPy</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label reveal">What I've built</p>
+  <h2 class="section-title reveal">Featured <span>Projects</span></h2>
+  <div class="projects-grid">
+    <div class="project-card reveal">
+      <div class="project-number">01 / Personal Project · 2025–2026</div>
+      <div class="project-title">Kartify — Full Stack E-Commerce Platform</div>
+      <div class="project-desc">Built a complete e-commerce ecosystem from scratch — REST API, React admin dashboard, React customer website, and React Native Android app. Deployed to production with Railway, Vercel, and Expo EAS.</div>
+      <div class="project-stack">
+        <span class="stack-tag">Django</span><span class="stack-tag">PostgreSQL</span>
+        <span class="stack-tag">React.js</span><span class="stack-tag">React Native</span>
+        <span class="stack-tag">Railway</span><span class="stack-tag">Vercel</span>
+        <span class="stack-tag">Docker</span><span class="stack-tag">JWT</span>
+        <span class="stack-tag">Cloudinary</span><span class="stack-tag">Twilio</span>
+      </div>
+      <div class="project-stat">↳ 4 platforms · Production deployed · Multi-language support</div>
+      <div class="project-links">
+        <a href="https://kartify-website.vercel.app/" target="_blank" class="proj-link">🌐 Live Website ↗</a>
+        <a href="https://expo.dev/accounts/rizwan6-organization/projects/kartifys/builds/180fee3a-d2c8-48cf-bf16-9d8e7fd9c093" target="_blank" class="proj-link">📱 Android App ↗</a>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-number">02 / AI/ML Project · Dec 2024 – Jan 2025</div>
+      <div class="project-title">WildAware — Animal Intrusion Detection</div>
+      <div class="project-desc">Real-time wild animal detection system using YOLOv8. Trained on 1,000+ custom-labeled images with automated alert notifications for human-wildlife conflict prevention.</div>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span><span class="stack-tag">YOLOv8</span>
+        <span class="stack-tag">OpenCV</span><span class="stack-tag">Roboflow</span>
+        <span class="stack-tag">Google Colab</span><span class="stack-tag">Deep Learning</span>
+      </div>
+      <div class="project-stat">↳ 92.4% mAP · 91.7% Precision · 93.1% Recall</div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-number">03 / Academic Project · Dec 2023 – Jan 2024</div>
+      <div class="project-title">DIGILAB — Lab Management System</div>
+      <div class="project-desc">Secure web-based lab management system with automated attendance, student/faculty management, and an admin reporting dashboard. Built with Django and MySQL.</div>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span><span class="stack-tag">Django</span>
+        <span class="stack-tag">MySQL</span><span class="stack-tag">Web Development</span>
+      </div>
+      <div class="project-stat">↳ Secure login · Attendance automation · Reporting dashboard</div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <p class="section-label reveal">Credentials</p>
+  <h2 class="section-title reveal">Education & <span>Certifications</span></h2>
+  <div class="cert-grid">
+    <div class="cert-card reveal">
+      <div class="cert-icon">☁️</div>
+      <div>
+        <div class="cert-name">AWS Cloud Foundations</div>
+        <div class="cert-issuer">Amazon Education Services (AES)</div>
+        <div class="cert-year">2025</div>
+      </div>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-icon">🎓</div>
+      <div>
+        <div class="cert-name">B.Tech — Computer Science Engineering</div>
+        <div class="cert-issuer">APJ Abdul Kalam Technological University, Kerala</div>
+        <div class="cert-year">2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label reveal">Let's connect</p>
+  <h2 class="section-title reveal">Get In <span>Touch</span></h2>
+  <div class="contact-wrapper reveal">
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>NAME</label>
+          <input type="text" placeholder="Your name" required/>
+        </div>
+        <div class="form-group">
+          <label>EMAIL</label>
+          <input type="email" placeholder="your@email.com" required/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>SUBJECT</label>
+        <input type="text" placeholder="Job opportunity / Collaboration"/>
+      </div>
+      <div class="form-group">
+        <label>MESSAGE</label>
+        <textarea placeholder="Tell me about the role or opportunity..."></textarea>
+      </div>
+      <button type="submit" class="form-submit" id="submitBtn">Send Message →</button>
+    </form>
+    <div class="contact-links">
+      <a href="mailto:riswan146970@gmail.com" class="contact-link">✉ riswan146970@gmail.com</a>
+      <a href="tel:+917909146970" class="contact-link">📞 +91 7909146970</a>
+      <a href="https://github.com/riswan-coder" target="_blank" class="contact-link">⌥ github.com/riswan-coder</a>
+      <a href="https://www.linkedin.com/in/riswan-dev/" target="_blank" class="contact-link">in LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Muhammed Riswan VP</span>
+  <span>Built with passion · Kerala, India</span>
+</footer>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 60);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Form submit
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  btn.textContent = '✓ Message Sent!';
+  btn.style.background = '#059669';
+  setTimeout(() => {
+    btn.textContent = 'Send Message →';
+    btn.style.background = '';
+    e.target.reset();
+  }, 3000);
+}
+</script>
+</body>
+</html>
